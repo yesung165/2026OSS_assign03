@@ -1,291 +1,371 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-bs-theme="dark">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Add Player — Lakers Roster Manager</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="my.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Player — Lakers Roster Manager</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="my.css" />
+  </head>
+  <body>
+    <header class="court-header">
+      <nav class="navbar navbar-expand-md">
+        <div
+          class="container page-shell"
+          style="padding-top: 0.75rem; padding-bottom: 0.75rem"
+        >
+          <a class="navbar-brand" href="index.html"
+            >LAKERS <span class="brand-sub">ROSTER MANAGER</span></a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navContent"
+            style="border-color: rgba(255, 255, 255, 0.4)"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse justify-content-end"
+            id="navContent"
+          >
+            <ul class="navbar-nav align-items-md-center gap-md-3">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Roster</a>
+              </li>
+              <li class="nav-item mt-2 mt-md-0">
+                <a class="btn btn-add" href="add.html">+ Add Player</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
 
-<header class="court-header">
-  <nav class="navbar navbar-expand-md">
-    <div class="container page-shell" style="padding-top: 0.75rem; padding-bottom: 0.75rem;">
-      <a class="navbar-brand" href="index.html">LAKERS <span class="brand-sub">ROSTER MANAGER</span></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" style="border-color: rgba(255,255,255,.4);">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navContent">
-        <ul class="navbar-nav align-items-md-center gap-md-3">
-          <li class="nav-item"><a class="nav-link" href="index.html">Roster</a></li>
-          <li class="nav-item mt-2 mt-md-0">
-            <a class="btn btn-add" href="add.html">+ Add Player</a>
-          </li>
-        </ul>
+    <main class="page-shell">
+      <div class="page-heading">
+        <div>
+          <h1>Add Player</h1>
+          <p>Enter the details for a new roster addition.</p>
+        </div>
       </div>
-    </div>
-  </nav>
-</header>
 
-<main class="page-shell">
-  <div class="page-heading">
-    <div>
-      <h1>Add Player</h1>
-      <p>Enter the details for a new roster addition.</p>
-    </div>
-  </div>
+      <form class="roster-form" id="addForm" novalidate>
+        <div class="mb-3">
+          <label for="name"
+            >Full name <span class="required-mark">*</span></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            required
+            minlength="2"
+            maxlength="40"
+          />
+          <div class="invalid-feedback">
+            Enter a name that's at least 2 characters long.
+          </div>
+        </div>
 
-  <form class="roster-form" id="addForm" novalidate>
-    <div class="mb-3">
-      <label for="name">Full name <span class="required-mark">*</span></label>
-      <input type="text" class="form-control" id="name" required minlength="2" maxlength="40">
-      <div class="invalid-feedback">Enter a name that's at least 2 characters long.</div>
-    </div>
+        <div class="row">
+          <div class="col-sm-6 mb-3">
+            <label for="number"
+              >Jersey number <span class="required-mark">*</span></label
+            >
+            <input
+              type="number"
+              class="form-control"
+              id="number"
+              required
+              min="0"
+              max="99"
+            />
+            <div class="form-text">Must be between 0 and 99.</div>
+            <div class="invalid-feedback">
+              Enter a jersey number between 0 and 99.
+            </div>
+          </div>
+          <div class="col-sm-6 mb-3">
+            <label for="position"
+              >Position <span class="required-mark">*</span></label
+            >
+            <select class="form-select" id="position" required>
+              <option value="" selected disabled>Choose a position…</option>
+              <option value="PG">Point Guard (PG)</option>
+              <option value="SG">Shooting Guard (SG)</option>
+              <option value="SF">Small Forward (SF)</option>
+              <option value="PF">Power Forward (PF)</option>
+              <option value="C">Center (C)</option>
+            </select>
+            <div class="invalid-feedback">Select a position.</div>
+          </div>
+        </div>
 
-    <div class="row">
-      <div class="col-sm-6 mb-3">
-        <label for="number">Jersey number <span class="required-mark">*</span></label>
-        <input type="number" class="form-control" id="number" required min="0" max="99">
-        <div class="form-text">Must be between 0 and 99.</div>
-        <div class="invalid-feedback">Enter a jersey number between 0 and 99.</div>
-      </div>
-      <div class="col-sm-6 mb-3">
-        <label for="position">Position <span class="required-mark">*</span></label>
-        <select class="form-select" id="position" required>
-          <option value="" selected disabled>Choose a position…</option>
-          <option value="PG">Point Guard (PG)</option>
-          <option value="SG">Shooting Guard (SG)</option>
-          <option value="SF">Small Forward (SF)</option>
-          <option value="PF">Power Forward (PF)</option>
-          <option value="C">Center (C)</option>
-        </select>
-        <div class="invalid-feedback">Select a position.</div>
-      </div>
-    </div>
+        <div class="row">
+          <div class="col-sm-6 mb-3">
+            <label for="height"
+              >Height <span class="required-mark">*</span></label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="height"
+              required
+              placeholder="e.g. 6'9&quot;"
+              pattern="^\d'\d{1,2}&quot;$"
+            />
+            <div class="form-text">Format: feet'inches" — example 6'9"</div>
+            <div class="invalid-feedback">
+              Use the format 6'9" (feet, apostrophe, inches, quote).
+            </div>
+          </div>
+          <div class="col-sm-6 mb-3">
+            <label for="age">Age <span class="required-mark">*</span></label>
+            <input
+              type="number"
+              class="form-control"
+              id="age"
+              required
+              min="18"
+              max="45"
+            />
+            <div class="form-text">Must be between 18 and 45.</div>
+            <div class="invalid-feedback">Enter an age between 18 and 45.</div>
+          </div>
+        </div>
 
-    <div class="row">
-      <div class="col-sm-6 mb-3">
-        <label for="height">Height <span class="required-mark">*</span></label>
-        <input type="text" class="form-control" id="height" required placeholder="e.g. 6'9&quot;" pattern="^\d'\d{1,2}&quot;$">
-        <div class="form-text">Format: feet'inches" — example 6'9"</div>
-        <div class="invalid-feedback">Use the format 6'9" (feet, apostrophe, inches, quote).</div>
-      </div>
-      <div class="col-sm-6 mb-3">
-        <label for="age">Age <span class="required-mark">*</span></label>
-        <input type="number" class="form-control" id="age" required min="18" max="45">
-        <div class="form-text">Must be between 18 and 45.</div>
-        <div class="invalid-feedback">Enter an age between 18 and 45.</div>
-      </div>
-    </div>
+        <div class="mb-3">
+          <label for="salary"
+            >Annual salary (USD) <span class="required-mark">*</span></label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="salary"
+            required
+            min="1"
+          />
+          <div class="form-text">
+            Whole dollar amount, no commas — e.g. 15000000
+          </div>
+          <div class="invalid-feedback">Enter a salary greater than $0.</div>
+        </div>
 
-    <div class="mb-3">
-      <label for="salary">Annual salary (USD) <span class="required-mark">*</span></label>
-      <input type="number" class="form-control" id="salary" required min="1">
-      <div class="form-text">Whole dollar amount, no commas — e.g. 15000000</div>
-      <div class="invalid-feedback">Enter a salary greater than $0.</div>
-    </div>
+        <div class="mb-4">
+          <label for="college">College / prior team</label>
+          <input type="text" class="form-control" id="college" maxlength="40" />
+        </div>
 
-    <div class="mb-4">
-      <label for="college">College / prior team</label>
-      <input type="text" class="form-control" id="college" maxlength="40">
-    </div>
+        <div class="d-flex gap-2">
+          <button type="submit" class="btn-court-primary btn">
+            Add player
+          </button>
+          <a href="index.html" class="btn-court-outline btn">Cancel</a>
+        </div>
+      </form>
+    </main>
 
-    <div class="d-flex gap-2">
-      <button type="submit" class="btn-court-primary btn">Add player</button>
-      <a href="index.html" class="btn-court-outline btn">Cancel</a>
-    </div>
-  </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const STORAGE_KEY = "lakersRoster";
 
- 
-</main>
+      const SEED_PLAYERS = [
+        {
+          id: 1,
+          name: "LeBron James",
+          number: 23,
+          position: "SF",
+          height: "6'9\"",
+          age: 40,
+          salary: 48728845,
+          college: "St. Vincent-St. Mary HS",
+        },
+        {
+          id: 2,
+          name: "Anthony Davis",
+          number: 3,
+          position: "PF",
+          height: "6'10\"",
+          age: 32,
+          salary: 43219440,
+          college: "Kentucky",
+        },
+        {
+          id: 3,
+          name: "Austin Reaves",
+          number: 15,
+          position: "SG",
+          height: "6'5\"",
+          age: 27,
+          salary: 13887000,
+          college: "Oklahoma",
+        },
+        {
+          id: 4,
+          name: "Rui Hachimura",
+          number: 28,
+          position: "PF",
+          height: "6'8\"",
+          age: 27,
+          salary: 17000000,
+          college: "Gonzaga",
+        },
+        {
+          id: 5,
+          name: "D'Angelo Russell",
+          number: 1,
+          position: "PG",
+          height: "6'4\"",
+          age: 29,
+          salary: 18692307,
+          college: "Ohio State",
+        },
+      ];
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
+      function loadPlayers() {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(SEED_PLAYERS));
+          return [...SEED_PLAYERS];
+        }
+        try {
+          return JSON.parse(raw);
+        } catch (e) {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(SEED_PLAYERS));
+          return [...SEED_PLAYERS];
+        }
+      }
 
+      function savePlayers(players) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(players));
+      }
 
-const STORAGE_KEY = "lakersRoster";
+      function getPlayerById(id) {
+        const players = loadPlayers();
+        return players.find((p) => String(p.id) === String(id));
+      }
 
+      function addPlayer(player) {
+        const players = loadPlayers();
+        const nextId =
+          players.length > 0 ? Math.max(...players.map((p) => p.id)) + 1 : 1;
+        player.id = nextId;
+        players.push(player);
+        savePlayers(players);
+        return player;
+      }
 
-const SEED_PLAYERS = [
-  {
-    id: 1,
-    name: "LeBron James",
-    number: 23,
-    position: "SF",
-    height: "6'9\"",
-    age: 40,
-    salary: 48728845,
-    college: "St. Vincent-St. Mary HS",
-  },
-  {
-    id: 2,
-    name: "Anthony Davis",
-    number: 3,
-    position: "PF",
-    height: "6'10\"",
-    age: 32,
-    salary: 43219440,
-    college: "Kentucky",
-  },
-  {
-    id: 3,
-    name: "Austin Reaves",
-    number: 15,
-    position: "SG",
-    height: "6'5\"",
-    age: 27,
-    salary: 13887000,
-    college: "Oklahoma",
-  },
-  {
-    id: 4,
-    name: "Rui Hachimura",
-    number: 28,
-    position: "PF",
-    height: "6'8\"",
-    age: 27,
-    salary: 17000000,
-    college: "Gonzaga",
-  },
-  {
-    id: 5,
-    name: "D'Angelo Russell",
-    number: 1,
-    position: "PG",
-    height: "6'4\"",
-    age: 29,
-    salary: 18692307,
-    college: "Ohio State",
-  },
-];
+      function updatePlayer(id, updated) {
+        const players = loadPlayers();
+        const index = players.findIndex((p) => String(p.id) === String(id));
+        if (index === -1) return null;
+        players[index] = {
+          ...players[index],
+          ...updated,
+          id: players[index].id,
+        };
+        savePlayers(players);
+        return players[index];
+      }
 
-function loadPlayers() {
-  const raw = localStorage.getItem(STORAGE_KEY);
-  if (!raw) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(SEED_PLAYERS));
-    return [...SEED_PLAYERS];
-  }
-  try {
-    return JSON.parse(raw);
-  } catch (e) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(SEED_PLAYERS));
-    return [...SEED_PLAYERS];
-  }
-}
+      function deletePlayer(id) {
+        const players = loadPlayers();
+        const filtered = players.filter((p) => String(p.id) !== String(id));
+        savePlayers(filtered);
+      }
 
-function savePlayers(players) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(players));
-}
+      function formatSalary(amount) {
+        return "$" + Number(amount).toLocaleString("en-US");
+      }
 
-function getPlayerById(id) {
-  const players = loadPlayers();
-  return players.find((p) => String(p.id) === String(id));
-}
+      function getQueryParam(name) {
+        const params = new URLSearchParams(window.location.search);
+        return params.get(name);
+      }
+    </script>
+    <script>
+      const form = document.getElementById("addForm");
 
-function addPlayer(player) {
-  const players = loadPlayers();
-  const nextId =
-    players.length > 0 ? Math.max(...players.map((p) => p.id)) + 1 : 1;
-  player.id = nextId;
-  players.push(player);
-  savePlayers(players);
-  return player;
-}
+      const heightPattern = /^\d'\d{1,2}"$/;
 
-function updatePlayer(id, updated) {
-  const players = loadPlayers();
-  const index = players.findIndex((p) => String(p.id) === String(id));
-  if (index === -1) return null;
-  players[index] = { ...players[index], ...updated, id: players[index].id };
-  savePlayers(players);
-  return players[index];
-}
+      function validateField(field, isValid) {
+        field.classList.toggle("is-invalid", !isValid);
+        field.classList.toggle("is-valid", isValid);
+        return isValid;
+      }
 
-function deletePlayer(id) {
-  const players = loadPlayers();
-  const filtered = players.filter((p) => String(p.id) !== String(id));
-  savePlayers(filtered);
-}
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-function formatSalary(amount) {
-  return "$" + Number(amount).toLocaleString("en-US");
-}
+        const name = document.getElementById("name");
+        const number = document.getElementById("number");
+        const position = document.getElementById("position");
+        const height = document.getElementById("height");
+        const age = document.getElementById("age");
+        const salary = document.getElementById("salary");
+        const college = document.getElementById("college");
 
-function getQueryParam(name) {
-  const params = new URLSearchParams(window.location.search);
-  return params.get(name);
-}
-</script>
-<script>
-  const form = document.getElementById("addForm");
+        // Validation 1: name required + minimum length
+        const nameValid = name.value.trim().length >= 2;
+        validateField(name, nameValid);
 
-  const heightPattern = /^\d'\d{1,2}"$/;
+        // Validation 2: jersey number required + numeric range 0-99
+        const numberValue = Number(number.value);
+        const numberValid =
+          number.value !== "" && numberValue >= 0 && numberValue <= 99;
+        validateField(number, numberValid);
 
-  function validateField(field, isValid) {
-    field.classList.toggle("is-invalid", !isValid);
-    field.classList.toggle("is-valid", isValid);
-    return isValid;
-  }
+        // Validation 3: position must be selected (not the placeholder)
+        const positionValid = position.value !== "";
+        validateField(position, positionValid);
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
+        // Validation 4: height must match feet'inches" format
+        const heightValid = heightPattern.test(height.value.trim());
+        validateField(height, heightValid);
 
-    const name = document.getElementById("name");
-    const number = document.getElementById("number");
-    const position = document.getElementById("position");
-    const height = document.getElementById("height");
-    const age = document.getElementById("age");
-    const salary = document.getElementById("salary");
-    const college = document.getElementById("college");
+        // Validation 5: age required + numeric range 18-45
+        const ageValue = Number(age.value);
+        const ageValid = age.value !== "" && ageValue >= 18 && ageValue <= 45;
+        validateField(age, ageValid);
 
-    // Validation 1: name required + minimum length
-    const nameValid = name.value.trim().length >= 2;
-    validateField(name, nameValid);
+        // Validation 6: salary required + must be positive
+        const salaryValid = salary.value !== "" && Number(salary.value) > 0;
+        validateField(salary, salaryValid);
 
-    // Validation 2: jersey number required + numeric range 0-99
-    const numberValue = Number(number.value);
-    const numberValid = number.value !== "" && numberValue >= 0 && numberValue <= 99;
-    validateField(number, numberValid);
+        const allValid =
+          nameValid &&
+          numberValid &&
+          positionValid &&
+          heightValid &&
+          ageValid &&
+          salaryValid;
 
-    // Validation 3: position must be selected (not the placeholder)
-    const positionValid = position.value !== "";
-    validateField(position, positionValid);
+        if (!allValid) {
+          return;
+        }
 
-    // Validation 4: height must match feet'inches" format
-    const heightValid = heightPattern.test(height.value.trim());
-    validateField(height, heightValid);
+        addPlayer({
+          name: name.value.trim(),
+          number: numberValue,
+          position: position.value,
+          height: height.value.trim(),
+          age: ageValue,
+          salary: Number(salary.value),
+          college: college.value.trim(),
+        });
 
-    // Validation 5: age required + numeric range 18-45
-    const ageValue = Number(age.value);
-    const ageValid = age.value !== "" && ageValue >= 18 && ageValue <= 45;
-    validateField(age, ageValid);
-
-    // Validation 6: salary required + must be positive
-    const salaryValid = salary.value !== "" && Number(salary.value) > 0;
-    validateField(salary, salaryValid);
-
-    const allValid =
-      nameValid && numberValid && positionValid && heightValid && ageValid && salaryValid;
-
-    if (!allValid) {
-      return;
-    }
-
-    addPlayer({
-      name: name.value.trim(),
-      number: numberValue,
-      position: position.value,
-      height: height.value.trim(),
-      age: ageValue,
-      salary: Number(salary.value),
-      college: college.value.trim(),
-    });
-
-    alert("게시물이 추가됩니다.");
-    window.location.href = "index.html";
-  });
-</script>
-</body>
+        alert("게시물이 추가됩니다.");
+        window.location.href = "index.html";
+      });
+    </script>
+  </body>
 </html>
