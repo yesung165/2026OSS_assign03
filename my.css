@@ -1,0 +1,374 @@
+
+
+:root {
+  --purple: #8a4fd6;
+  --purple-dark: #2e1054;
+  --purple-soft: #2a2035;
+  --gold: #fdb927;
+  --gold-deep: #c89b3c;
+  --ink: #f5f0e8;
+  --paper: #131019;
+  --paper-line: #2e2838;
+  --card-bg: #1c1724;
+  --white: #ffffff;
+  --gray-text: #b3a9c2;
+  --danger: #e5595e;
+  --radius: 4px;
+  --font-display: "Anton", "Arial Narrow", sans-serif;
+  --font-body: "Work Sans", "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--ink);
+  padding-bottom: 3rem;
+}
+
+a { color: var(--gold); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---------- Top bar ---------- */
+.court-header {
+  background: var(--purple-dark);
+  background-image: linear-gradient(135deg, var(--purple-dark) 0%, #1a0a2e 100%);
+  border-bottom: 6px solid var(--gold);
+  padding: 0;
+}
+
+.court-header .navbar-brand {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+  font-size: 1.6rem;
+  color: var(--white) !important;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.court-header .navbar-brand .brand-sub {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.court-header .nav-link {
+  color: var(--white) !important;
+  font-weight: 500;
+}
+
+.court-header .nav-link.active,
+.court-header .nav-link:hover {
+  color: var(--gold) !important;
+}
+
+.court-header .btn-add {
+  background: var(--gold);
+  color: var(--purple-dark);
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius);
+}
+
+.court-header .btn-add:hover {
+  background: var(--white);
+  color: var(--purple-dark);
+}
+
+/* ---------- Page shell ---------- */
+.page-shell {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 0;
+}
+
+.page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--paper-line);
+  padding-bottom: 1rem;
+}
+
+.page-heading h1 {
+  font-family: var(--font-display);
+  color: var(--white);
+  font-size: 2.1rem;
+  margin: 0;
+}
+
+.page-heading p {
+  margin: 0.15rem 0 0;
+  color: var(--gray-text);
+}
+
+.page-heading a { color: var(--gold); }
+
+/* ---------- Roster table (desktop) ---------- */
+.roster-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.roster-table thead th {
+  background: var(--purple-dark);
+  color: var(--white);
+  text-align: left;
+  padding: 0.85rem 1rem;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.roster-table tbody tr {
+  border-bottom: 1px solid var(--paper-line);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.roster-table tbody tr:hover {
+  background: var(--purple-soft);
+}
+
+.roster-table td {
+  padding: 0.85rem 1rem;
+  vertical-align: middle;
+  color: var(--ink);
+}
+
+.jersey-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  background: var(--purple-dark);
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+}
+
+.player-name {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.pos-tag {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: var(--purple);
+  color: var(--white);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.salary-cell {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+/* ---------- Roster cards (mobile) ---------- */
+.roster-cards { display: none; }
+
+.roster-card {
+  background: var(--card-bg);
+  border: 1px solid var(--paper-line);
+  border-left: 5px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.roster-card .info { flex: 1; min-width: 0; }
+.roster-card .player-name { display: block; }
+.roster-card .meta {
+  font-size: 0.85rem;
+  color: var(--gray-text);
+  margin-top: 0.15rem;
+}
+
+/* ---------- Empty state ---------- */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--gray-text);
+  background: var(--card-bg);
+  border: 1px dashed var(--paper-line);
+}
+
+/* ---------- Forms ---------- */
+.roster-form {
+  background: var(--card-bg);
+  padding: 1.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  max-width: 640px;
+}
+
+.roster-form label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+}
+
+.roster-form .required-mark { color: var(--danger); }
+
+.roster-form .form-control,
+.roster-form .form-select {
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius);
+  padding: 0.55rem 0.75rem;
+}
+
+.roster-form .form-control::placeholder { color: var(--gray-text); }
+
+.roster-form .form-control:focus,
+.roster-form .form-select:focus {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px var(--purple-soft);
+}
+
+.roster-form .form-text {
+  font-size: 0.8rem;
+  color: var(--gray-text);
+}
+
+.invalid-feedback { font-size: 0.82rem; color: var(--danger); }
+
+.btn-court-primary {
+  background: var(--gold);
+  color: var(--purple-dark);
+  border: none;
+  font-weight: 700;
+  padding: 0.6rem 1.4rem;
+  border-radius: var(--radius);
+}
+
+.btn-court-primary:hover { background: var(--white); color: var(--purple-dark); }
+
+.btn-court-outline {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  font-weight: 600;
+  padding: 0.6rem 1.4rem;
+  border-radius: var(--radius);
+}
+
+.btn-court-outline:hover { background: var(--purple-soft); color: var(--white); }
+
+.btn-court-danger {
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid var(--danger);
+  font-weight: 600;
+  padding: 0.6rem 1.4rem;
+  border-radius: var(--radius);
+}
+
+.btn-court-danger:hover { background: var(--danger); color: var(--white); }
+
+/* ---------- View page ---------- */
+.player-profile {
+  background: var(--card-bg);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+.player-profile .profile-top {
+  background: linear-gradient(135deg, var(--purple-dark) 0%, #1a0a2e 100%);
+  color: var(--white);
+  padding: 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.player-profile .profile-top .jersey-badge {
+  width: 3.6rem;
+  height: 3.6rem;
+  font-size: 1.5rem;
+}
+
+.player-profile .profile-top h2 {
+  font-family: var(--font-display);
+  margin: 0;
+  font-size: 1.7rem;
+}
+
+.player-profile .profile-top .pos-tag {
+  background: var(--gold);
+  color: var(--purple-dark);
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+}
+
+.detail-item {
+  padding: 1.1rem 1.75rem;
+  border-bottom: 1px solid var(--paper-line);
+  border-right: 1px solid var(--paper-line);
+}
+
+.detail-item:nth-child(2n) { border-right: none; }
+
+.detail-item .detail-label {
+  font-size: 0.78rem;
+  color: var(--gray-text);
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.detail-item .detail-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.profile-actions {
+  padding: 1.25rem 1.75rem;
+  display: flex;
+  gap: 0.75rem;
+  background: var(--paper);
+}
+
+
+
+/* ==========================================================================
+   Responsive — Mobile (<= 720px)
+   ========================================================================== */
+@media (max-width: 720px) {
+  .roster-table { display: none; }
+  .roster-cards { display: block; }
+
+  .page-shell { padding: 1.25rem 1rem 0; }
+
+  .court-header .navbar-brand { font-size: 1.15rem; gap: 0.3rem; }
+  .court-header .brand-sub { font-size: 0.62rem; }
+  .court-header .nav-link { font-size: 0.85rem; }
+  .court-header .btn-add { font-size: 0.8rem; padding: 0.4rem 0.75rem; }
+}
