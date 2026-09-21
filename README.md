@@ -2,8 +2,7 @@
 
 A Multi-Page CRUD app (List / Add / View / Edit / Delete) for managing an NBA roster, built with HTML, Bootstrap 5, and vanilla JS.
 
-**Live site:** _add your Vercel URL here_
-**Repository:** _add your GitHub URL here_
+
 
 ---
 
